@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كيرلس هاني | Portfolio</title>
+    <style>
+        :root { --main-color: #2c3e50; --accent-color: #3498db; --text-light: #ecf0f1; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; line-height: 1.6; color: #333; background-color: #f4f4f4; }
+        header { background: var(--main-color); color: var(--text-light); padding: 1rem 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        .container { width: 80%; margin: auto; overflow: hidden; padding: 20px; }
+        section { background: #fff; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; color: var(--main-color); }
+        .lang-switch { margin-bottom: 20px; text-align: center; }
+        .lang-switch button { padding: 10px 20px; cursor: pointer; border: none; background: var(--accent-color); color: white; border-radius: 5px; margin: 5px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .service-card { background: #e8f4fd; padding: 15px; border-radius: 5px; text-align: center; border: 1px solid #d1e9f9; }
+        footer { text-align: center; padding: 20px; background: var(--main-color); color: white; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>كيرلس هاني نصحي | Kerollos Hany</h1>
+    <p>أخصائي تسويق استراتيجي & BIS Student</p>
+</header>
+
+<div class="container">
+    <div class="lang-switch">
+        <button onclick="switchLang('ar')">العربية</button>
+        <button onclick="switchLang('en')">English</button>
+    </div>
+
+    <section>
+        <h2 id="services-title">الخدمات الأساسية | Core Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>سايت تعريفي CV</h3>
+                <p>تصميم مواقع شخصية احترافية لعرض الخبرات والمهارات.</p>
+            </div>
+            <div class="service-card">
+                <h3>متجر إلكتروني (E-commerce)</h3>
+                <p>بناء منصات بيع متكاملة تشبه أمازون مع إدارة المنتجات.</p>
+            </div>
+            <div class="service-card">
+                <h3>سيستم مبيعات (POS)</h3>
+                <p>أنظمة برمجية لإدارة المبيعات والمخازن بدقة عالية.</p>
+            </div>
+            <div class="service-card">
+                <h3>مواقع شركات</h3>
+                <p>تصميم واجهات تعريفية للشركات تعكس الهوية التجارية.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv-content">
+        </section>
+</div>
+
+<footer>
+    <p>للتواصل: keromenaolm@gmail.com | 01273929303</p>
+</footer>
+
+<script>
+    const data = {
+        ar: {
+            title: "الملخص المهني",
+            summary: "أخصائي تسويق استراتيجي وطالب في نظم معلومات الأعمال (BIS)، أجمع بين مهارات التحليل المالي والتصميم الجرافيكي. [cite: 44]",
+            skillsTitle: "المهارات الأساسية",
+            skills: ["تسويق رقمي وبناء هوية [cite: 49]", "تصميم جرافيك (Photoshop) [cite: 50]", "تحليل فني للبورصة [cite: 51]"],
+            experienceTitle: "الخبرة العملية",
+            experience: "محلل أسواق مالية (2020-2025) [cite: 58] وأخصائي تسويق حر. [cite: 54]"
+        },
+        en: {
+            title: "Professional Summary",
+            summary: "A strategic Marketing Specialist & BIS Student with a background in Financial Analysis and Graphic Design. [cite: 6]",
+            skillsTitle: "Core Competencies",
+            skills: ["Digital Strategy & Branding [cite: 11]", "Professional Graphic Design [cite: 12]", "Technical Analysis (Stock Market) [cite: 13]"],
+            experienceTitle: "Professional Experience",
+            experience: "Financial Analyst (2020-2025) [cite: 20] and Freelance Marketing Specialist. [cite: 16]"
+        }
+    };
+
+    function switchLang(lang) {
+        const cv = document.getElementById('cv-content');
+        const content = data[lang];
+        cv.innerHTML = `
+            <h2>${content.title}</h2>
+            <p>${content.summary}</p>
+            <h2>${content.skillsTitle}</h2>
+            <ul>${content.skills.map(s => `<li>${s}</li>`).join('')}</ul>
+            <h2>${content.experienceTitle}</h2>
+            <p>${content.experience}</p>
+        `;
+        document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+
+    // تشغيل اللغة العربية افتراضياً
+    switchLang('ar');
+</script>
+
+</body>
+</html>
