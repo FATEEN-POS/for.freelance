@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerollos Hany| Web Developer & Marketer</title>
+    <title>Kerollos Hany | Web Developer & Marketer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -23,6 +23,7 @@
             background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
             min-height: 100vh;
             line-height: 1.6;
+            transition: direction 0.3s ease;
         }
 
         .container { width: 85%; max-width: 1000px; margin: auto; padding: 40px 20px; }
@@ -52,7 +53,7 @@
             margin-bottom: 20px;
         }
 
-        h2 { font-size: 1.8rem; border-right: 4px solid var(--accent); padding-right: 15px; margin-bottom: 30px; }
+        h2 { font-size: 1.8rem; border-inline-start: 4px solid var(--accent); padding-inline-start: 15px; margin-bottom: 30px; }
 
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .service-card {
@@ -108,7 +109,7 @@
 
 <div class="container">
     <header>
-        <div class="tagline">متوفر الآن للمشاريع الجديدة</div>
+        <div id="tagline" class="tagline">متوفر الآن للمشاريع الجديدة</div>
         <h1>كيرلس هاني نصحي</h1>
         <p id="main-role">Full-Stack Web Developer & Marketing Strategist</p>
         <div style="margin-top: 20px;">
@@ -119,28 +120,8 @@
 
     <section class="glass-card">
         <h2 id="services-head">خدماتي البرمجية | Digital Solutions</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-code"></i>
-                <h3>تطوير المواقع التعريفية</h3>
-                <p>بناء بورتفوليو ومواقع شخصية (CV) بتصاميم عصرية مثل الجلاس مورفينج.</p>
+        <div id="services-container" class="services-grid">
             </div>
-            <div class="service-card">
-                <i class="fas fa-shopping-cart"></i>
-                <h3>متاجر إلكترونية (E-commerce)</h3>
-                <p>تصميم واجهات متاجر احترافية وسهلة الاستخدام تشبه أمازون ونون.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-cash-register"></i>
-                <h3>أنظمة إدارة المبيعات (POS)</h3>
-                <p>تطوير سيستم مبيعات متكامل لإدارة المخازن والفواتير بكفاءة.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-bullhorn"></i>
-                <h3>هوية الشركات (Branding)</h3>
-                <p>دمج البرمجة مع علم نفس التسويق لبناء واجهة تعكس قوة علامتك التجارية.</p>
-            </div>
-        </div>
     </section>
 
     <section id="cv-section" class="glass-card">
@@ -157,8 +138,11 @@
 </footer>
 
 <script>
-    const data = {
+    const translations = {
         ar: {
+            name: "كيرلس هاني نصحي",
+            tagline: "متوفر الآن للمشاريع الجديدة",
+            servicesHead: "خدماتي البرمجية",
             summaryHead: "الملخص المهني",
             summary: "أخصائي تسويق استراتيجي ومطور ويب، أجمع بين مهارات التحليل المالي ونظم معلومات الأعمال (BIS). خبير في توظيف علم نفس المستهلك لبناء استراتيجيات تقنية وتسويقية ذات تأثير عالي.",
             expHead: "الخبرة والمهارات",
@@ -166,26 +150,61 @@
                 "<strong>تطوير الويب:</strong> HTML, CSS, JavaScript والأساسيات البرمجية.",
                 "<strong>التسويق:</strong> بناء الهوية التجارية وعلم نفس المستهلك.",
                 "<strong>التحليل المالي:</strong> خبرة 3 سنوات في التحليل الفني للبورصة."
+            ],
+            services: [
+                { icon: "fa-code", title: "تطوير المواقع التعريفية", desc: "بناء بورتفوليو ومواقع شخصية (CV) بتصاميم عصرية." },
+                { icon: "fa-shopping-cart", title: "متاجر إلكترونية", desc: "تصميم واجهات متاجر احترافية وسهلة الاستخدام." },
+                { icon: "fa-cash-register", title: "أنظمة إدارة المبيعات", desc: "تطوير سيستم مبيعات متكامل لإدارة المخازن والفواتير." },
+                { icon: "fa-bullhorn", title: "هوية الشركات", desc: "دمج البرمجة مع علم نفس التسويق لبناء واجهة تعكس قوة علامتك." }
             ]
         },
         en: {
+            name: "Kerollos Hany Noshy",
+            tagline: "Available for new projects",
+            servicesHead: "Digital Solutions",
             summaryHead: "Professional Summary",
-            summary: "Strategic Marketing Specialist & Web Developer. Expert at leveraging Consumer Psychology and market data to craft high-impact digital strategies[cite: 7].",
+            summary: "Strategic Marketing Specialist & Web Developer, combining Business Information Systems (BIS) with financial analysis. Expert in leveraging Consumer Psychology to build high-impact digital strategies.",
             expHead: "Experience & Skills",
             skills: [
-                "<strong>Web Development:</strong> Crafting modern web solutions & POS systems.",
+                "<strong>Web Development:</strong> HTML, CSS, JavaScript, and modern frameworks.",
                 "<strong>Marketing:</strong> Branding, Consumer Behavior, and Digital Strategy.",
                 "<strong>Finance:</strong> 3 years of Technical Analysis and market signals."
+            ],
+            services: [
+                { icon: "fa-code", title: "Portfolio Websites", desc: "Building modern portfolios and personal CV sites with cutting-edge designs." },
+                { icon: "fa-shopping-cart", title: "E-commerce Stores", desc: "Professional, user-friendly storefronts designed for growth." },
+                { icon: "fa-cash-register", title: "POS Systems", desc: "Integrated sales systems for efficient inventory and invoice management." },
+                { icon: "fa-bullhorn", title: "Branding", desc: "Merging code with marketing psychology for a powerful brand presence." }
             ]
         }
     };
 
     function switchLang(lang) {
-        const section = document.getElementById('cv-section');
-        const content = data[lang];
-        document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        const content = translations[lang];
+        
+        // Change text alignment and page direction
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.body.style.textAlign = lang === 'ar' ? 'right' : 'left';
 
-        section.innerHTML = `
+        // Update Header
+        document.getElementById('tagline').innerText = content.tagline;
+        document.querySelector('h1').innerText = content.name;
+        document.getElementById('services-head').innerText = content.servicesHead;
+
+        // Update Services Grid
+        const servicesGrid = document.getElementById('services-container');
+        servicesGrid.innerHTML = content.services.map(s => `
+            <div class="service-card">
+                <i class="fas ${s.icon}"></i>
+                <h3>${s.title}</h3>
+                <p>${s.desc}</p>
+            </div>
+        `).join('');
+
+        // Update CV Section
+        const cvSection = document.getElementById('cv-section');
+        cvSection.innerHTML = `
             <h2>${content.summaryHead}</h2>
             <p>${content.summary}</p>
             <div style="margin-top:30px;">
@@ -195,6 +214,7 @@
         `;
     }
 
+    // Initialize with Arabic
     switchLang('ar');
 </script>
 
